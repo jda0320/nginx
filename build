@@ -3,6 +3,7 @@
 
 ./configure \
     --add-module=./jda-modules/nginx-hello-world-module \
+    --add-module=./jda-modules/nginx-jda-test-module \
     --with-debug
 
 make && sudo make install
