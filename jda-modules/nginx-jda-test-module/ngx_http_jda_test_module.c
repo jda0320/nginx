@@ -9,6 +9,14 @@
 #include <ngx_http.h>
 
 
+#define NGX_FALSE	0
+#define NGX_TRUE	1
+
+#define JDA_CONF_DEBUG(fmt, args...)	\
+	ngx_log_error(NGX_LOG_NOTICE, ngx_cycle->log, 0, "[JDA_CONF]: "fmt"(%s.%d)", ##args, __FUNCTION__, __LINE__);
+#define JDA_HTTP_DEBUG(fmt, args...)	\
+	ngx_log_debug(NGX_LOG_DEBUG_HTTP, r->connection->log, 0, "[JDA_HTTP]: "fmt"", ##args);
+
 typedef struct {
 	ngx_flag_t		jda_test;
 } ngx_http_jda_test_loc_conf_t;
@@ -70,6 +78,8 @@ ngx_http_jda_test_create_loc_conf(ngx_conf_t *cf)
 {
 	ngx_http_jda_test_loc_conf_t	*conf = NULL;
 
+	JDA_CONF_DEBUG("");
+
 	conf = ngx_pcalloc(cf->pool, sizeof(ngx_http_jda_test_loc_conf_t));
 	if (conf == NULL) {
 		return NULL;
@@ -85,6 +95,8 @@ ngx_http_jda_test_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
 {
 	ngx_http_jda_test_loc_conf_t	*prev = parent;
 	ngx_http_jda_test_loc_conf_t	*conf = child;
+
+	JDA_CONF_DEBUG("");
 
 	ngx_conf_merge_value(conf->jda_test,
 						 prev->jda_test, 1);

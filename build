@@ -7,17 +7,17 @@
 	--with-http_ssl_module \
     --with-debug
 
-make && sudo make install
+make && make install
 
 BUILD_PATH=${PWD}
 
 # update cert
 cd $BUILD_PATH/bin && ./make_cert.sh
-sudo cp -rf $BUILD_PATH/bin/cert /usr/local/nginx/conf/.
+cp -rf $BUILD_PATH/bin/cert /usr/local/nginx/conf/.
 rm -rf $BUILD_PATH/bin/cert
 
 # update conf
-sudo cp $BUILD_PATH/conf/jda_nginx.conf /usr/local/nginx/conf/nginx.conf
+cp $BUILD_PATH/conf/jda_nginx.conf /usr/local/nginx/conf/nginx.conf
 
 # update binary
-sudo cp -f /usr/local/nginx/sbin/nginx /usr/sbin/nginx
+cp -f /usr/local/nginx/sbin/nginx /usr/sbin/nginx

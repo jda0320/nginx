@@ -1,0 +1,7 @@
+#!/bin/sh
+
+
+make install
+
+# update binary
+cp -f /usr/local/nginx/sbin/nginx /usr/sbin/nginx
