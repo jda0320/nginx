@@ -19,5 +19,4 @@ rm -rf $BUILD_PATH/bin/cert
 # update conf
 cp $BUILD_PATH/conf/jda_nginx.conf /usr/local/nginx/conf/nginx.conf
 
-# update binary
-cp -f /usr/local/nginx/sbin/nginx /usr/sbin/nginx
+cp -f $BUILD_PATH/objs/nginx /usr/local/nginx/sbin/nginx
